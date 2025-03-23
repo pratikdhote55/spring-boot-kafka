@@ -14,7 +14,7 @@ import com.practice.kafka.publisher.KafkaProducer;
 @RequestMapping("/api/v1/kafka")
 public class MessageController {
 
-	private KafkaProducer kafkaProducer;
+	private final KafkaProducer kafkaProducer;
 
 	public MessageController(KafkaProducer kafkaProducer) {
 		this.kafkaProducer = kafkaProducer;

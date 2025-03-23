@@ -8,9 +8,9 @@ import com.practice.kafka.dto.User;
 @Service
 public class KafkaProducer {
 
-	private KafkaTemplate<String, String> kafkaTemplateForString;
+	private final KafkaTemplate<String, String> kafkaTemplateForString;
 
-	private KafkaTemplate<String, Object> kafkaTemplateForJSON;
+	private final KafkaTemplate<String, Object> kafkaTemplateForJSON;
 
 	public KafkaProducer(KafkaTemplate<String, String> kafkaTemplateForString,
 			KafkaTemplate<String, Object> kafkaTemplateForJSON) {
