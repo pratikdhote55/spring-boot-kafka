@@ -1,6 +1,7 @@
 package com.practice.kafka.subscriber;
 
 import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.kafka.annotation.TopicPartition;
 import org.springframework.stereotype.Service;
 
 import com.practice.kafka.dto.User;
@@ -8,7 +9,7 @@ import com.practice.kafka.dto.User;
 @Service
 public class KafkaConsumer {
 
-	@KafkaListener(topics = "my-kafka-topic-1", groupId = "my-group-id-1")
+	@KafkaListener(topics = "my-kafka-topic-1", groupId = "my-group-id-1", topicPartitions = {@TopicPartition(topic="my-kafka-topic-1", partitions = {"2"})})
     public void consumeMessage(String message) {
         System.out.println("Consumed String message: " + message);
     }

@@ -19,7 +19,7 @@ public class KafkaProducer {
 	}
 
 	public String produceMessage(String message) {
-		kafkaTemplateForString.send("my-kafka-topic-1", message).thenAccept(result -> System.out.println(
+		kafkaTemplateForString.send("my-kafka-topic-1", 2, null, message).thenAccept(result -> System.out.println(
 				"Message sent successfully: [" + message + "] to Record Metadata : " + result.getRecordMetadata()))
 				.exceptionally(ex -> {
 					System.err.println("Error sending message: " + ex.getMessage());
