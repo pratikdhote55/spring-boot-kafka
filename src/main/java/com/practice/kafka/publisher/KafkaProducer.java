@@ -13,8 +13,8 @@ public class KafkaProducer {
 
 	private final KafkaTemplate<String, Object> kafkaTemplateForJSON;
 
-	public KafkaProducer(@Qualifier("stringKafkaTemplate") KafkaTemplate<String, String> kafkaTemplateForString,
-						 @Qualifier("jsonKafkaTemplate") KafkaTemplate<String, Object> kafkaTemplateForJSON) {
+	public KafkaProducer(KafkaTemplate<String, String> kafkaTemplateForString,
+						 KafkaTemplate<String, Object> kafkaTemplateForJSON) {
 		this.kafkaTemplateForString = kafkaTemplateForString;
 		this.kafkaTemplateForJSON = kafkaTemplateForJSON;
 	}

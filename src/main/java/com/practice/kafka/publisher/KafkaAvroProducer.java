@@ -20,7 +20,7 @@ public class KafkaAvroProducer {
 
     private final KafkaTemplate<String, Employee> kafkaTemplateForEmployee;
 
-    public KafkaAvroProducer(@Qualifier("avroKafkaTemplate") KafkaTemplate<String, Employee> kafkaTemplateForEmployee) {
+    public KafkaAvroProducer(KafkaTemplate<String, Employee> kafkaTemplateForEmployee) {
         this.kafkaTemplateForEmployee = kafkaTemplateForEmployee;
     }
 
