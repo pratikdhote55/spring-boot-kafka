@@ -1,14 +1,11 @@
 package com.practice.kafka.publisher;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.practice.kafka.dto.Employee;
 import org.apache.avro.io.DatumWriter;
 import org.apache.avro.io.Encoder;
 import org.apache.avro.io.EncoderFactory;
 import org.apache.avro.specific.SpecificDatumWriter;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.SendResult;
 import org.springframework.stereotype.Service;
@@ -23,13 +20,8 @@ public class KafkaAvroProducer {
 
     private final KafkaTemplate<String, Employee> kafkaTemplateForEmployee;
 
-    private final ObjectMapper objectMapper;
-
-
-
-    public KafkaAvroProducer(KafkaTemplate<String, Employee> kafkaTemplateForEmployee, ObjectMapper objectMapper) {
+    public KafkaAvroProducer(@Qualifier("avroKafkaTemplate") KafkaTemplate<String, Employee> kafkaTemplateForEmployee) {
         this.kafkaTemplateForEmployee = kafkaTemplateForEmployee;
-        this.objectMapper = objectMapper;
     }
 
     public String produceMessage(Employee employee) throws IOException {

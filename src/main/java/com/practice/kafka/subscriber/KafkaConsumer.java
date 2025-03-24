@@ -9,12 +9,12 @@ import com.practice.kafka.dto.User;
 @Service
 public class KafkaConsumer {
 
-	@KafkaListener(topics = "my-kafka-topic-1", groupId = "my-group-id-1", topicPartitions = {@TopicPartition(topic="my-kafka-topic-1", partitions = {"2"})})
+	@KafkaListener(topics = "my-kafka-topic-1", groupId = "my-group-id-1", topicPartitions = {@TopicPartition(topic="my-kafka-topic-1", partitions = {"2"})}, containerFactory = "jsonKafkaListenerFactory")
     public void consumeMessage(String message) {
         System.out.println("Consumed String message: " + message);
     }
 	
-	@KafkaListener(topics = "my-kafka-topic-2", groupId = "my-group-id-2")
+	@KafkaListener(topics = "my-kafka-topic-2", groupId = "my-group-id-2", containerFactory = "jsonKafkaListenerFactory")
     public void consumeMessage(User user) {
         System.out.println("Consumed Object message: " + user);
     }
