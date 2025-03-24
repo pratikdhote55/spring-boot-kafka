@@ -28,7 +28,7 @@ public class KafkaProducer {
 		return "Message is being sent asynchronously!";
 	}
 
-	public String produceMessage(User user) {
+	public User produceMessage(User user) {
 		kafkaTemplateForJSON.send("my-kafka-topic-2", user).thenApply(result -> {
 			System.out.println(
 					"Message sent successfully: [" + user + "] to Record Metadata: " + result.getRecordMetadata());
@@ -38,6 +38,7 @@ public class KafkaProducer {
 			return null;
 		});
 
-		return "Message is being sent asynchronously!";
+		return user;
 	}
+
 }

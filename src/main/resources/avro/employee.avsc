@@ -1,0 +1,28 @@
+{
+  "namespace": "com.practice.kafka.dto",
+  "type": "record",
+  "name": "Employee",
+  "fields": [
+    {
+      "name": "givenName",
+      "type": "string"
+    },
+    {
+          "name": "gender",
+          "type": "string",
+          "default": ""
+    },
+    {
+      "name": "mobileNo",
+      "type": "string"
+    },
+    {
+      "name": "email",
+      "type": "string"
+    },
+    {
+      "name": "country",
+      "type": "string"
+    }
+  ]
+}
