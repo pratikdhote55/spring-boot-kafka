@@ -1,0 +1,143 @@
+{
+	"info": {
+		"_postman_id": "9ac356fd-648c-4624-b223-4752dc6030e2",
+		"name": "Kafka",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26272446"
+	},
+	"item": [
+		{
+			"name": "String message",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/kafka/publishString?message=hello",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"kafka",
+						"publishString"
+					],
+					"query": [
+						{
+							"key": "message",
+							"value": "hello"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "JSON",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"givenName\": \"John Doe\",\r\n  \"mobileNo\": \"+1234567890\",\r\n  \"email\": \"johndoe@example.com\",\r\n  \"country\": \"USA\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/kafka/publishUser",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"kafka",
+						"publishUser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Avro Object message",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"givenName\" : \"John Doe\",\r\n    \"gender\" : \"Male\",\r\n    \"mobileNo\" : \"+1234567890\",\r\n    \"email\" : \"johndoe@example.com\",\r\n    \"country\" : \"USA\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/kafka/publishEmployee",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"kafka",
+						"publishEmployee"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retry and DLT",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"givenName\": \"John Doe\",\r\n    \"mobileNo\": \"+1234567890\",\r\n    \"email\": \"johndoe@example.com\",\r\n    \"country\": \"CANADA\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/kafka/publishRetryUser",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"kafka",
+						"publishRetryUser"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
