@@ -2,6 +2,7 @@ package com.practice.kafka.Controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.practice.kafka.dto.Employee;
+import com.practice.kafka.dto.RetryUser;
 import com.practice.kafka.publisher.KafkaAvroProducer;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -52,6 +53,12 @@ public class MessageController {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
 					.body("Error converting to JSON: " + e.getMessage());
 		}
+	}
+
+	@PostMapping(value = "/publishRetryUser")
+	public ResponseEntity<RetryUser> produceUser(@RequestBody RetryUser retryUser) {
+		RetryUser sentMessage = kafkaProducer.produceMessage(retryUser);
+		return ResponseEntity.ok(retryUser);
 	}
 
 }

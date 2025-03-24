@@ -1,5 +1,6 @@
 package com.practice.kafka.publisher;
 
+import com.practice.kafka.dto.RetryUser;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
@@ -40,6 +41,19 @@ public class KafkaProducer {
 		});
 
 		return user;
+	}
+
+	public RetryUser produceMessage(RetryUser retryUser) {
+		kafkaTemplateForJSON.send("my-kafka-topic-5", retryUser).thenApply(result -> {
+			System.out.println(
+					"Message sent successfully: [" + retryUser + "] to Record Metadata: " + result.getRecordMetadata());
+			return result;
+		}).exceptionally(ex -> {
+			System.err.println("Error sending message: " + ex.getMessage());
+			return null;
+		});
+
+		return retryUser;
 	}
 
 }
